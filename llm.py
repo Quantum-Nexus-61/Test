@@ -1,20 +1,17 @@
 import os
 import time
-import torch
 import pickle
+import torch
 from langchain.llms.base import LLM
 from llama_index import GPTListIndex, LLMPredictor, ServiceContext, SimpleDirectoryReader
 from transformers import pipeline
 
 def timeit(func):
-    """
-    A utility decorator to time running time.
-    """
     def wrapper(*args, **kwargs):
         start = time.time()
         result = func(*args, **kwargs)
         end = time.time()
-        args_str = ', '.join.map(str, args)
+        args_str = ', '.join(map(str, args))
         print(f"[{(end - start):.8f} seconds]: {func.__name__}({args_str}) -> {result}")
         return result
     return wrapper
