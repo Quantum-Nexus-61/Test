@@ -123,4 +123,6 @@ if __name__ == "__main__":
 
     summarized_response = summarize_text(response)
     print("Summary:")
+
     print(summarized_response)
+    
