@@ -1,8 +1,7 @@
 import os
-import pickle
 import time
-
 import torch
+from dotenv import load_dotenv
 from langchain.llms.base import LLM
 from llama_index import (
     GPTListIndex,
@@ -11,6 +10,13 @@ from llama_index import (
     SimpleDirectoryReader,
 )
 from transformers import pipeline
+import pickle
+
+
+os.environ["TRANSFORMERS_CACHE"] = "/media/samuel/UDISK1/transformers_cache"
+
+
+os.environ["OPENAI_API_KEY"] = "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"
 
 
 def timeit(func):
@@ -70,9 +76,9 @@ def create_index():
 
 
 @timeit
-def execute_query(index, input_text):
+def execute_query(index):
     response = index.query(
-        input_text,
+        "Who does Indonesia export its coal to in 2023?",
         exclude_keywords=["petroleum"],
     )
     return response
@@ -88,22 +94,6 @@ def summarize_text(text, max_length=150):
 
 
 if __name__ == "__main__":
-    user_choice = "text"
-
-    if user_choice == "text":
-        input_text = "Python is a versatile and popular programming language. It is often used in web development, data analysis, and machine learning projects."
-    elif user_choice == "file":
-        file_path = input("Enter the path to the file to summarize: ")
-
-        if not os.path.exists(file_path):
-            print("File not found. Please try again.")
-            exit()
-
-        with open(file_path, "r") as file:
-            input_text = file.read()
-    else:
-        print("Invalid input type. Please choose 'text' or 'file'.")
-
     if not os.path.exists("7_custom_opt.pkl"):
         print("No local cache of the model found, downloading from Hugging Face")
         index = create_index()
@@ -118,10 +108,10 @@ if __name__ == "__main__":
         with open("7_custom_opt.pkl", "rb") as file:
             index = pickle.load(file)
 
-    response = execute_query(index, input_text)
+    response = execute_query(index)
     print(response)
 
     summarized_response = summarize_text(response)
     print("Summary:")
-
     print(summarized_response)
+    print(response.source_nodes)
