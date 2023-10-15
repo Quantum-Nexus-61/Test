@@ -78,7 +78,7 @@ if __name__ == "__main__":
 
     if user_choice == "text":
         # input_text = input("Enter the text to summarize: ")
-        input_text = "Python is a versatile and popular programming language. It is often used in web development, data analysis, and machine learning projects. Python's simplicity and extensive libraries make it a great choice for developers."
+        input_text = "Python is a versatile and popular programming language. It is often used in web development, data analysis, and machine learning projects."
     elif user_choice == "file":
         file_path = input("Enter the path to the file to summarize: ")
 
