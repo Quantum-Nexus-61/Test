@@ -1,7 +1,1 @@
-torch
-transformers
-dotmap
-numpy
-Pillow
-llama-index
-python-dotenv
+nltk
