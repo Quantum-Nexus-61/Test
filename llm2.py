@@ -37,7 +37,7 @@ sumValues = sum(sentenceValue.values())
 average = int(sumValues / len(sentenceValue))
 
 # Store sentences into the summary
-summary = ''
+summary = ""
 for sentence in sentences:
     if (sentence in sentenceValue) and (sentenceValue[sentence] > (1.2 * average)):
         summary += " " + sentence
