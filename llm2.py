@@ -1,31 +1,29 @@
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize, sent_tokenize
+import spacy
+
+# Load the English tokenizer, tagger, parser, NER, and word vectors
+nlp = spacy.load("en_core_web_sm")
 
 # Input text - to summarize
-text = """We can use the sent_tokenize() method to create the array of sentences. Secondly, we will need a dictionary to keep the score of each sentence, we will later go through the dictionary to generate the summary."""
+text = """The quality, type, and density of information conveyed via text varies from source to source. Textbooks tend to be low in density but high in quality, while academic articles are high in both quality and density. On the other hand, news articles can vary significantly from source to source. Regardless of where the text comes from the goal here is to minimize the time you spend reading. Thus, we will build a tool that can easily be adapted to any number of sources."""
 
-# Tokenizing the text
-stopWords = set(stopwords.words("english"))
-words = word_tokenize(text)
+# Process the text with spaCy
+doc = nlp(text)
 
-# Creating a frequency table to keep the
-# score of each word
+# Tokenizing the text and generating sentences
+words = [token.text for token in doc]
+sentences = [sent.text for sent in doc.sents]
 
+# Create a frequency table to keep the score of each word
 freqTable = dict()
 for word in words:
     word = word.lower()
-    if word in stopWords:
-        continue
     if word in freqTable:
         freqTable[word] += 1
     else:
         freqTable[word] = 1
 
-# Creating a dictionary to keep the score
-# of each sentence
-sentences = text.split(". ")
+# Create a dictionary to keep the score of each sentence
 sentenceValue = dict()
-
 for sentence in sentences:
     for word, freq in freqTable.items():
         if word in sentence.lower():
@@ -34,16 +32,14 @@ for sentence in sentences:
             else:
                 sentenceValue[sentence] = freq
 
-sumValues = 0
-for sentence in sentenceValue:
-    sumValues += sentenceValue[sentence]
-
-# Average value of a sentence from the original text
+# Calculate the average value of a sentence from the original text
+sumValues = sum(sentenceValue.values())
 average = int(sumValues / len(sentenceValue))
 
-# Storing sentences into our summary
-summary = ""
+# Store sentences into the summary
+summary = ''
 for sentence in sentences:
     if (sentence in sentenceValue) and (sentenceValue[sentence] > (1.2 * average)):
         summary += " " + sentence
+
 print(summary)

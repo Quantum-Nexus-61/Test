@@ -10,6 +10,7 @@ COPY requirements.txt /app/
 
 # Install any needed packages
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m spacy download en_core_web_sm
 
 # Run your script when the container launches
 CMD ["python", "llm2.py"]
