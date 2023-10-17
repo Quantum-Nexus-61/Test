@@ -6,7 +6,6 @@ nlp = spacy.load("en_core_web_sm")
 # Input text - to summarize
 text = """The Earth is the third planet from the Sun in our solar system. It is the only known celestial body to support life. The Earth's atmosphere consists of various gases, including oxygen and nitrogen. It has a diverse climate, with regions that experience different weather patterns. Earth is also home to a wide range of ecosystems, from lush rainforests to arid deserts. It is an incredible and unique planet. Artificial intelligence (AI) is a field of computer science that focuses on creating intelligent machines capable of performing tasks that typically require human intelligence. AI technologies include machine learning, natural language processing, and computer vision. These technologies have applications in various industries, such as healthcare, finance, and transportation. AI has the potential to revolutionize the way we live and work."""
 
-# Process the text with spaCy
 doc = nlp(text)
 
 # Tokenizing the text and generating sentences
