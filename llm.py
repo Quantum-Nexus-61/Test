@@ -4,7 +4,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # Input text - to summarize
-text = """The Earth is the third planet from the Sun in our solar system. It is the only known celestial body to support life. The Earth's atmosphere consists of various gases, including oxygen and nitrogen. It has a diverse climate, with regions that experience different weather patterns. Earth is also home to a wide range of ecosystems, from lush rainforests to arid deserts. It is an incredible and unique planet."""
+text = """In homeschooling and distance education, teaching and learning take place independent from the institution of school or in a virtual school outside a traditional school building, respectively. Schools are organized in several different organizational models, including departmental, small learning communities, academies, integrated, and schools-within-a-school."""
 
 # Process the text with spaCy
 doc = nlp(text)
