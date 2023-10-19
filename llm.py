@@ -4,7 +4,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # Input text - to summarize
-text = """The Earth is the third planet from the Sun in our solar system. It is the only known celestial body to support life. The Earth's atmosphere consists of various gases, including oxygen and nitrogen. It has a diverse climate, with regions that experience different weather patterns. Earth is also home to a wide range of ecosystems, from lush rainforests to arid deserts. It is an incredible and unique planet. Artificial intelligence (AI) is a field of computer science that focuses on creating intelligent machines capable of performing tasks that typically require human intelligence. AI technologies include machine learning, natural language processing, and computer vision. These technologies have applications in various industries, such as healthcare, finance, and transportation. AI has the potential to revolutionize the way we live and work."""
+text = """The island nation of Japan, isolated from the rest of the world for much of its history, embarked on a period of aggressive expansion near the turn of the 20th century. Two successful wars, against China in 1894-95 and the Russo-Japanese War in 1904-05, fueled these ambitions, as did Japan’s successful participation in World War I (1914-18) alongside."""
 
 doc = nlp(text)
 
