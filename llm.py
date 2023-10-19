@@ -4,7 +4,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # Input text - to summarize
-text = """The island nation of Japan, isolated from the rest of the world for much of its history, embarked on a period of aggressive expansion near the turn of the 20th century. Two successful wars, against China in 1894-95 and the Russo-Japanese War in 1904-05, fueled these ambitions, as did Japan’s successful participation in World War I (1914-18) alongside."""
+text = """Japanese torpedo bombers flew just 50 feet above the water as they fired at the U.S. ships in the harbor, while other planes strafed the decks with bullets and dropped bombs."""
 
 doc = nlp(text)
 
