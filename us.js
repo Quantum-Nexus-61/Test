@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const inputText = document.getElementById("inputText");
-    const summarizeButton = document.getElementById("summarizeButton");
+    const inputText = document.getElementById("inputtext");
+    const summarizeButton = document.getElementById("summarizebutton");
     const summary = document.getElementById("summary");
 
     // Function to tokenize text and generate a summary
