@@ -1,34 +1,37 @@
 provider "aws" {
-  region = "us-east-2"
+  region  = "ap-south-1"
 }
 
-resource "aws_instance" "example" {
-  ami           = "ami-0c55b159cbfafe1f0"  # Amazon Linux 2 AMI ID
-  instance_type = "t2.micro"
-
-  // Generate a new SSH key pair
-  key_name = aws_key_pair.generated_key.key_name
-
-  user_data = <<-EOF
-              #!/bin/bash
-              sudo su
-              yum update -y
-              yum install -y httpd
-              cd /var/www/html
-              wget https://github.com/Quantum-Nexus-61/Dev/archive/refs/heads/main.zip
-              unzip Dev-main.zip
-              cp -r Dev-main/* /var/www/html/
-              rm -rf Dev-main.zip
-              systemctl enable httpd 
-              systemctl start httpd
-              EOF
+terraform {
+  backend "s3" {
+      bucket = "sohan"
+      key    = "build/terraform.tfstate"
+      region = "us-east-2"
+  }
 }
 
-resource "aws_key_pair" "generated_key" {
-  key_name   = "example-key"
-  public_key = file("~/.ssh/id_rsa.pub")  # Use the public key from your local machine
+data "aws_iam_policy_document" "website_policy" {
+  statement {
+    actions = [
+      "s3:GetObject"
+    ]
+    principals {
+      identifiers = ["*"]
+      type = "AWS"
+    }
+    resources = [
+      "arn:aws:s3:::gotrav/*"
+    ]
+  }
 }
 
-output "instance_ip" {
-  value = aws_instance.example.public_ip
+resource "aws_s3_bucket" "s3Bucket" {
+     bucket = "website"
+     acl       = "public-read"
+
+     policy = data.aws_iam_policy_document.website_policy.json
+
+   website {
+       index_document = "index.html"
+   }
 }
