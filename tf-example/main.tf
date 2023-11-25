@@ -1,5 +1,5 @@
 provider "aws" {
-  region  = "ap-south-1"
+  region  = "us-east-2"
 }
 
 terraform {
@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "website_policy" {
       type = "AWS"
     }
     resources = [
-      "arn:aws:s3:::gotrav/*"
+      "arn:aws:s3:::website/*"
     ]
   }
 }
@@ -32,7 +32,7 @@ resource "aws_s3_bucket" "s3Bucket" {
     policy  = <<EOF
     {
          "id" : "MakePublic",
-       "version" : "2012-10-17",
+       "version" : "2023-11-25",
        "statement" : [
           {
              "action" : [
