@@ -1,0 +1,29 @@
+name: Sync-S3
+
+on:
+  workflow_dispatch:
+
+jobs:
+  tf_fmt:
+    name: Deploy Site
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout Repo
+      uses: actions/checkout@v1
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: '${{ secrets.TF_USER_AWS_KEY }}'
+        aws-secret-access-key: '${{ secrets.TF_USER_AWS_SECRET }}'
+        aws-region: us-east-2
+
+    - name: Sync S3
+      uses: jakejarvis/s3-sync-action@master
+      env:
+        SOURCE_DIR: './src'
+        AWS_REGION: 'us-east-2'
+        AWS_S3_BUCKET: 'sohan-138923712'
+        AWS_ACCESS_KEY_ID: ${{ secrets.TF_USER_AWS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_USER_AWS_SECRET }}
