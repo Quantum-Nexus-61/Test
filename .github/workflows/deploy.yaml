@@ -38,6 +38,6 @@ jobs:
       env:
         SOURCE_DIR: './src'
         AWS_REGION: 'us-east-2'
-        AWS_S3_BUCKET: 'website'
+        AWS_S3_BUCKET: 'sohan-138923712'
         AWS_ACCESS_KEY_ID: ${{ secrets.TF_USER_AWS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.TF_USER_AWS_SECRET }}
