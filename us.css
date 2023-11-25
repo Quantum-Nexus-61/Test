@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    padding: 100px;
+    margin: 100px 0;
+    border: 1px solid #791010;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6593c4;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#summary {
+    margin-top: 20px;
+    text-align: left;
+}
