@@ -39,7 +39,7 @@ resource "aws_s3_bucket" "s3Bucket" {
                  "s3:GetObject"
               ],
              "effect" : "Allow",
-             "resource" : "arn:aws:s3:::[BUCKET_NAME_HERE]/*",
+             "resource" : "arn:aws:s3:::website/*",
              "principal" : "*"
           }
         ]
