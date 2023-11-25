@@ -12,24 +12,7 @@ terraform {
 
 resource "aws_s3_bucket" "s3Bucket" {
      bucket = "website"
-     acl       = "public-read"
-
-    policy  = <<EOF
-    {
-         "id" : "MakePublic",
-       "version" : "2023-11-25",
-       "statement" : [
-          {
-             "action" : [
-                 "s3:GetObject"
-              ],
-             "effect" : "Allow",
-             "resource" : "arn:aws:s3:::website/*",
-             "principal" : "*"
-          }
-        ]
-      }
-    EOF
+     acl       = "private"
 
    website {
        index_document = "index.html"
