@@ -11,7 +11,7 @@ terraform {
 }
 
 resource "aws_s3_bucket" "s3Bucket" {
-     bucket = "website"
+     bucket = "sohan-138923712"
      acl       = "private"
 
    website {
