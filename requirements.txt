@@ -132,8 +132,6 @@ pytweening==1.0.4
 pytz==2023.3
 pywhatkit==5.4
 pywikihow==0.5.7
-pywin32==306
-pywin32-ctypes==0.2.2
 PyYAML==6.0.1
 qt5-applications==5.15.2.2.3
 qt5-tools==5.15.2.1.3
